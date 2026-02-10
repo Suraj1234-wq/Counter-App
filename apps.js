@@ -1,26 +1,21 @@
-function calculateAge() {
-  const dob = document.getElementById("time").value;
-  const result = document.querySelector("#result");
+ const increment = document.querySelector("#increment");
+const decrement = document.querySelector("#decrement");
+const reset = document.querySelector("#reset");
+const count = document.querySelector("#count");
 
-  // if(!dob) {
-  //   result.innerText = "Select your Date of birth ?";
-  // } 
+let counter = 0;
 
-  const birthdate = new Date(dob);
-  const today = new Date();
+increment.addEventListener("click",() =>{
+  counter++;
+  count.innerHTML = counter;
+});
 
-  let years = today.getFullYear()-birthdate.getFullYear();
-  let month = today.getMonth()-birthdate.getMonth();
-  let day = today.getDate()-birthdate.getDate();
+decrement.addEventListener("click",() =>{
+  counter--;
+  count.innerHTML = counter;
+});
 
-  if(day<0) {
-    month--;
-    day = day+ new Date(today.getFullYear(),today.getMonth(),today.getDate());
-  } 
-  if(month<0) {
-    years--;
-    month = month+12;
-  }
-
-  result.innerText = `Your age is ${years} years,${month} months, ${day} days`;
-}
+reset.addEventListener("click", ()=>{
+  counter = 0;
+  count.innerHTML = counter;
+});
